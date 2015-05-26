@@ -21,17 +21,19 @@
 
 <body>
 
-  <form>
+  <form method="POST" action="/user">
     <h1>Register</h1>
     <div class="form-group">
-      <label for="InputEmail1">Username</label>
-      <input type="userName" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      <label for="InputUsername">Username</label>
+      <input type="text" class="form-control" id="inputUsername" placeholder="Enter userName" name="user[userName]">
     </div>
     <div class="form-group">
-      <label for="InputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <label for="InputPassword">Password</label>
+      <input type="text" class="form-control" id="inputPassword" placeholder="Password" name="user[password]">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <label for="InputPassword">Confirm Password</label>
+    <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password">
+    <button type="password" class="btn btn-default">Submit</button>
   </form>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

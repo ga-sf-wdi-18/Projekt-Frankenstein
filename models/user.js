@@ -1,21 +1,10 @@
-var mongoose = require("mongoose");
+var mongoose = require("mongoose"),
+    bcrypt = require("bcrypt");
 
-var userSchema = new mongoose.Schema({
-  userName: {
-    type: String,
-    lowercase: true,
-    required: true,
-    index: {
-      unique: true
-    }
-  },
-  passwordDigest: {
-    type: String,
-    required: true
-  }
-});
-
-var bcrypt = require("bcrypt");
+    var userSchema = new mongoose.Schema({
+      userName: String,
+      passwordDigest: String
+    });
 
 var confirm = function(pswrd, pswrdCon) {
   return pswrd === pswrdCon;
@@ -31,8 +20,8 @@ userSchema.statics.createSecure = function(params, cb) {
   }
 
   var that = this;
-  //does hash and salting
-  bcrypt.hash(params.passsword, 12, function(err, hash) {
+  // does hash and salting
+  bcrypt.hash(params.password, 7, function(err, hash) {
     params.passwordDigest = hash;
     that.create(params, cb);
   });
@@ -43,7 +32,15 @@ userSchema.statics.authenticate = function (params, cb) {
       userName: params.userName
     },
     function (err, user) {
-      user.checkPswrd(params.password);
+      //if user is null otherwise
+      if (!user) {
+        console.log("user not found");
+        cb(err, null);
+      } else {
+        user.checkPswrd(params.password, cb);
+        console.log(user);
+      }
+      //do not need to check pw of non existant user
     });
 };
 
@@ -52,17 +49,14 @@ userSchema.methods.checkPswrd = function(password, cb) {
   bcrypt.compare(password,
   this.passwordDigest, function (err, isMatch) {
     if (isMatch) {
+        console.log("password matches");
       cb(null, user);
     } else {
+      console.log("password not a Match");
       cb("OOPS", null);
     }
   });
 };
-
-var User = mongoose.model("User", userSchema);
-
-module.exports = User;
-
 
 var User = mongoose.model("User", userSchema);
 
