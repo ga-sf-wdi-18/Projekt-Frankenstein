@@ -1,11 +1,11 @@
 //required
+//behind vars har har har
 var express = require("express"),
   bodyParser = require("body-parser"),
   db = require("./models"),
   session = require("express-session"),
-  path = require("path");
-
-var app = express(),
+  app = express(),
+  path = require("path"),
   views = path.join(__dirname, "views");
 
 //middleware for express
@@ -36,7 +36,7 @@ var loginHelpers = function(req, res, next) {
 
 app.use(loginHelpers);
 
-//app dot use
+//body-parser
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -84,7 +84,9 @@ app.get("/logout", function(req, res) {
   req.logout();
   res.redirect("/");
 });
-//post request to server
+//post requests to server
+
+//login request to server takes you to story on success
 app.post("/login", function(req, res) {
   var user = req.body.user;
   db.User.
@@ -93,14 +95,14 @@ app.post("/login", function(req, res) {
     if (user) {
       console.log("LOGGING IN");
       req.login(user);
-      res.redirect("/profile");
+      res.redirect("/story");
     } else {
       console.log("failed to login");
       res.redirect("/login");
     }
   });
 });
-
+//posting to users for acc creation
 app.post("/user", function(req, res) {
   var newUser = req.body.user;
   console.log(newUser);
@@ -114,7 +116,10 @@ app.post("/user", function(req, res) {
     }
   });
 });
-
+//need route to update story
+// app.post("/story", function(req, res) {
+//   var
+// })
 app.listen(3000, function() {
   console.log("Running!");
 });

@@ -1,9 +1,9 @@
-// var mongoose = require("mongoose");
-//
-// var storySchema = new mongoose.Schema({
-//   storyText: {type: String}
-// });
-//
-// var User = mongoose.model("Story", userSchema);
-//
-// module.exports = Story;
+var mongoose = require("mongoose");
+//posting to this will update story content
+var storySchema = new mongoose.Schema({
+  storyText: {type: String}
+});
+
+var Story = mongoose.model("Story", storySchema);
+
+module.exports = Story;
