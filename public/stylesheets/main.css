@@ -1,12 +1,6 @@
-.box {
-  display: inline-block;
-  border: 3px solid black;
-  width: 10em;
-  height: 10em;
-  margin-bottom: 1px;
-}
-
-.h1 {
-  text-align:center;
-
+.textarea {
+  width: 100%;
+  line-height: 2em;
+  overflow: auto;
+  padding: 5px;
 }

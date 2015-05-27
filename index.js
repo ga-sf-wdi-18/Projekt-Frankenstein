@@ -36,6 +36,8 @@ var loginHelpers = function(req, res, next) {
 
 app.use(loginHelpers);
 
+app.use(express.static(__dirname + '/public'));
+
 //body-parser
 app.use(bodyParser.urlencoded({
   extended: true
