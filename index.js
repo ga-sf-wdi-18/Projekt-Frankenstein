@@ -66,6 +66,13 @@ app.get("/login", function(req, res) {
   res.sendFile(loginPath);
 });
 
+app.get("/story:id", function (req, res) {
+  db.Story.find({}, function (err, results) {
+    console.log(results);
+    res.send(JSON.stringify(results));
+  });
+});
+
 app.get("/register", function(req, res) {
   var registerPath = path.join(views, "register.html");
   res.sendFile(registerPath);

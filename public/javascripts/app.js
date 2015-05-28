@@ -1,40 +1,46 @@
-// CLIENT
 
-// on page load
-$(function(){
+$(document).ready(function() {
+
   // get and render all the story
   Story.all();
-  // set the view's behaviors
-  View.init();
+  // // set the view's behaviors
+  // View.init();
+// View.render();
+
 });
 
-// VIEW OBJECT
-function View() {};
-View.init = function() {
-  // story content submit event listener
-  $("#story-content").on("change", function(e){
-    // stop page reload
-    e.preventDefault();
-    // format content data into a query string
-    var storyParams = $(this).serialize();
-    // send a post request to put this story in db
-    Story.update(storyParams);
-  });
+
+//story non DB JSON version
+// var storyOb = [
+//   {
+//     words : "blee bleee bleee"
+//   }
+// ];
+
+// // VIEW OBJECT
+function View() {}
+// View.init = function() {
+//   // story content submit event listener
+//   $("#story-content").on("change", function(e){
+//     // stop page reload
+//     e.preventDefault();
+//     // send a update request to story in db
+//     Story.update(storyParams);
+//   });
+// };
+
+View.render = function(item) {
+var story = item[0].words;
+$("#storyWords").append(story);
 };
 
-View.render = function(items, parentId, templateId) {
-  // render a template
-  var template = _.template($("#" + templateId).html());
-  // input data into template and append to parent
-  $("#" + parentId).html(template({collection: item}));
-};
-
-function Story() {};
+function Story() {}
 Story.all = function() {
-  $.get("/story", function(res){
-    // parse the response
+  $.get("/story:id", function(res){
+    // remove the quotes from words:
     var story = JSON.parse(res);
-    // render the results
-    View.render(story, "story-content", "story-template");
+    console.log(story);
+    // render the
+    View.render(story);
   });
 };

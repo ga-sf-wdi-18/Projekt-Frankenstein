@@ -5,8 +5,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="javascripts/app.js"></script>
   <link type="text/css" href="/stylesheets/main.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <!-- Underscore -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <!-- app.js -->
+  <script src="javascripts/app.js"></script>
   <!-- Bootstrap -->
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -19,27 +25,17 @@
     <header class="page-header">
       <h1 class="text-center">The Tallest Tale</h1>
     </header>
-
-    <textarea class="content" id="story-content" rows="27" style="width:100%;line-height:2em;overflow:auto;padding:5px;">
-      Mea agam labore laoreet cu, graeci forensibus has id. Ea has hendrerit dissentiet, et mentitum atomorum pri, qui prima deserunt no. His ei mundi aliquando, salutatus persecuti an nec. Eius percipit ea quo, cum ne verear prompta, his scripta vituperata
-      interpretaris in. Ne per nibh persius docendi, no pri reque conclusionemque. Cu magna rebum nec. Utamur facilisi eam te, dicant populo deserunt ex mel. Mel duis cotidieque eu, his ex illud accusam, per dictas salutandi at. Ne albucius invidunt evertitur
-      mel, cetero explicari mea eu, usu eruditi consequat voluptatum in. Percipit insolens eu cum, eos dicat affert verear at. Ad eam ceteros antiopam, ut vim falli nullam facilisi, sit ei explicari definitiones. Ius ex partem bonorum corpora, eu essent
-      vocibus cum. Quo ludus recteque at, mea at perpetua moderatius efficiantur. Debet civibus hendrerit et nec, et doming bonorum nec, cu sea dolor nusquam. Eu suas explicari splendide has, eu vis ullum ponderum.
-    </textarea>
-
+    <div class="content"> <p id="storyWords">  </p>  </div>
+    <form class="story" id="story-content">
+      <textarea class="form-control" id="txtme" type="text" rows="5" cols="40" placeholder="Feed the words to meee"></textarea>
+      <button class="btn btn-primary btn-lg" type="submit">Send The Words</button>
+    </form>
   </div>
-
 </body>
 
-<script type="text/template" id="story-template">
-  <div style="text-align:center;">
-  <% collection(function(item){ %>
-  	<hr>
-	<h3><%= item.name %> <%= item.type %></h3>
-	<p>Strength: <%= item.strength %></p>
-	<p>Weakness: <%= item.weakness %></p>
-  <% }); %>
-  </div>
-</script>
+
+<!-- Underscore templates -->
+<!-- <span class="label label-default">Default</span> -->
+
 
 </html>
