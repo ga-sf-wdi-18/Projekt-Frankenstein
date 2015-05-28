@@ -129,6 +129,6 @@ app.post("/user", function(req, res) {
 // app.post("/story", function(req, res) {
 //   var
 // })
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("Running!");
 });

@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/franken_app");
+mongoose.connect(process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL || "mongodb://localhost/franken_app");
 
 module.exports.User = require("./user");
 

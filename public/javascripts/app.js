@@ -19,15 +19,7 @@ $(document).ready(function() {
 
 // // VIEW OBJECT
 function View() {}
-// View.init = function() {
-//   // story content submit event listener
-//   $("#story-content").on("change", function(e){
-//     // stop page reload
-//     e.preventDefault();
-//     // send a update request to story in db
-//     Story.update(storyParams);
-//   });
-// };
+
 
 View.render = function(item) {
 var story = item[0].words;
@@ -45,6 +37,13 @@ Story.all = function() {
   });
 };
 
-// Story.update = function (e, ) {
-//
-// }
+Story.update = function () {
+  $("#update-form").on("submit", function (e) {
+    e.preventDefault();
+    var storyParams = $(this).serialize();
+    console.log(storyParams);
+    Story.update(storyParams);
+    $("update-form")
+
+  });
+};
