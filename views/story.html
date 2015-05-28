@@ -23,11 +23,11 @@
   <div class="container-fluid" id="page-wrapper">
     <!-- header -->
     <header class="page-header">
-      <h1 class="text-center">The Tallest Tale</h1>
+      <h1 class="text-center">Story</h1>
     </header>
     <div class="content"> <p id="storyWords">  </p>  </div>
-    <form class="story" id="story-content">
-      <textarea class="form-control" id="txtme" type="text" rows="5" cols="40" placeholder="Feed the words to meee"></textarea>
+    <form id="update-form" class="form-inline" type="text" onsubmit="Story.update(event, this)">
+      <textarea class="form-control" id="txtme" name="words" type="text" rows="5" cols="40" placeholder="Feed the words to meee"></textarea>
       <button class="btn btn-primary btn-lg" type="submit">Send The Words</button>
     </form>
   </div>

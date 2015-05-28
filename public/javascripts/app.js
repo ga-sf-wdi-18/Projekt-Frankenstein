@@ -44,3 +44,7 @@ Story.all = function() {
     View.render(story);
   });
 };
+
+// Story.update = function (e, ) {
+//
+// }
