@@ -1,6 +1,8 @@
 var mongoose = require("mongoose");
 //posting to this will update story content
 var storySchema = new mongoose.Schema({
+  name: {type: String,
+         default: "genesis"},
   words: {type: String}
 });
 

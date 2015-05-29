@@ -133,8 +133,8 @@ app.post("/user", function(req, res) {
 app.post("/story", function (req, res) {
   console.log(req.body);
   var newStory = req.body.data;
-  console.log(newStory);
-  db.Story.findOneAndUpdate({}, {words: newStory}, function (err, story) {
+  console.log("received newStory", newStory);
+  db.Story.findByIdAndUpdate({_id:"55675ef128d1c9b010993296"}, {words: newStory}, {new:true}, function (err, story) {
     console.log(story);
     res.send(story);
   });

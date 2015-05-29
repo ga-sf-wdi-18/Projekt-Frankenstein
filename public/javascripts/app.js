@@ -24,7 +24,7 @@ function View() {}
 
 View.render = function(item) {
 var story = item[0].words;
-$("#storyWords").append(story);
+$("#storyWords").empty().append(story);
 };
 
 function Story() {}
@@ -51,6 +51,7 @@ Story.update = function () {
     console.log(newStory);
     $.post("/story", {data: newStory}, function (res) {
       console.log(res);
+      Story.all();
     });
 
   });
