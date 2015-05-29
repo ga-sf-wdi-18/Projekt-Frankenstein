@@ -1,24 +1,14 @@
 
 $(document).ready(function() {
 
-  // get and render all the story
   Story.all();
   Story.update();
-  // // set the view's behaviors
-  // View.init();
-// View.render();
+
 
 });
 
 
-//story non DB JSON version
-// var storyOb = [
-//   {
-//     words : "blee bleee bleee"
-//   }
-// ];
 
-// // VIEW OBJECT
 function View() {}
 
 
