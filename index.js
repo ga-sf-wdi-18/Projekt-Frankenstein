@@ -66,7 +66,7 @@ app.get("/login", function(req, res) {
   res.sendFile(loginPath);
 });
 
-app.get("/story:id", function (req, res) {
+app.get("/stories", function (req, res) {
   db.Story.find({}, function (err, results) {
     console.log(results);
     res.send(JSON.stringify(results));
@@ -98,6 +98,7 @@ app.get("/logout", function(req, res) {
 //login request to server takes you to story on success
 app.post("/login", function(req, res) {
   var user = req.body.user;
+  console.log(user);
   db.User.
   authenticate(user, function(err, user) {
     console.log(user);
@@ -129,6 +130,16 @@ app.post("/user", function(req, res) {
 // app.post("/story", function(req, res) {
 //   var
 // })
+app.post("/story", function (req, res) {
+  console.log(req.body);
+  var newStory = req.body.data;
+  console.log(newStory);
+  db.Story.findOneAndUpdate({}, {words: newStory}, function (err, story) {
+    console.log(story);
+    res.send(story);
+  });
+});
+
 app.listen(process.env.PORT || 3000, function() {
   console.log("Running!");
 });
