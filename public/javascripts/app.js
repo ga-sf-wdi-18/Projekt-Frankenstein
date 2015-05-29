@@ -43,6 +43,7 @@ Story.update = function () {
 
     e.preventDefault();
     console.log("form submited");
+
     var existingStory = $("#storyWords").text();
     console.log(existingStory);
     var storyParams = $(this.words).val();
@@ -51,6 +52,7 @@ Story.update = function () {
     console.log(newStory);
     $.post("/story", {data: newStory}, function (res) {
       console.log(res);
+      $("#update-form")[0].reset();
       Story.all();
     });
 
